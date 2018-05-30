@@ -1,0 +1,27 @@
+version: "3"
+services:
+  powerpuff-girls:
+    image: uladzimir/rtl-powerpuff-girls
+    network_mode: "host"
+  tvmaze-scraper:
+    image: uladzimir/rtl-tvmaze-scraper
+    ports:
+      - "3005:3005"
+    networks:
+      - backend
+    depends_on:
+      - mongo
+    environment:
+      NODE_ENV: production
+  mongo:
+    image: mongo
+    networks:
+      - backend
+    volumes:
+      - ./db:/data/db
+    ports:
+      - "27017:27017"
+
+networks:
+  backend:
+    driver: bridge

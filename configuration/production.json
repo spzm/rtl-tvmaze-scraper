@@ -1,0 +1,31 @@
+{
+  "port": 3004,
+  "shutdownTimeout": 60000,
+  "endpoints": {
+    "base": "http://rtl-assignments.westeurope.cloudapp.azure.com/tvmaze-scraper",
+    "shows": "http://api.tvmaze.com/shows",
+    "cast": "/cast"
+  },
+  "db": {
+    "connection": "mongodb://localhost:27017/showcast",
+    "reconnectCount": 2,
+    "reconnectTimeout": 1000,
+    "options": {}
+  },
+  "rest": {
+    "showCastPageSize": 250
+  },
+  "scraper": {
+    "showCallsWait": 500,
+    "showSimultaneousRequests": 4,
+    "castCallsWait": 2000,
+    "castDebounceWait": 2000,
+    "castSimultaneousRequests": 4,
+    "runOnStart": false,
+    "jobSchedule": "00 00 02 * * *"
+  },
+  "logging": {
+    "level": "info",
+    "transports": ["console"]
+  }
+}
