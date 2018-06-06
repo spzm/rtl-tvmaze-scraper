@@ -1,11 +1,11 @@
 ## TVMazeShow scraper
 
-Current application has two busines features work:
+Current application has two business features work:
 
 1. scrap data of tvMaze shows and casts
 1. provide rest api endpoint on /api/v0/showcast?page=0&size=250
 
-Rest endpoint consumes next query parameters:
+Showcase endpoint consumes next query parameters:
 - `page` is required parameter and can be omitted
 - `size` is optional and has default value 250
 
@@ -15,9 +15,9 @@ Enpdoints:
 
 Scraper can be configured in two ways:
 
-- Enable by config scraper -> runOnStart. Later can be moved to env variable
-- Setup a scedule with cron like string in config
-- Development mode by default bootstraps scrapping on start. Producion is setup on schedule only.
+- Enable by config: `scraper -> runOnStart`. Later it can be moved to env variable.
+- Setup a schedule with cron like string in configuration.
+- In development mode: scrape process will be executed on start. On production: - will be executed by schedule only.
 
 ## Running
 
@@ -29,17 +29,17 @@ Scraper can be configured in two ways:
 
 `DOCKER_USERNAME=login DOCKER_PASSWORD="pass" DOCKER_BUILD_TAG=latest bash build.sh`
 
-## Folder strucure
+## Folder structure
 
 ```
-/configuration - here production and development configs are stored and managed by nconf
+/configuration - production and development configs are stored. nconf is used under the hood.
 /src
-    /boundaries - In this part of application any 3-rd party connectoin, state and etc are bootstrapped. They have start / stop. TODO: create Runnable to establish interface and contracts.
-    /controllers - Here main application buisness logic is stored
+    /boundaries - In this part of the application any 3rd party connection or state is bootstrapped. They have provide start/stop api. TODO: create Runnable to establish interface and contracts.
+    /controllers - Here business logic is stored
     /helpers - small utilities that are used across the application
-    /services - usefull services that provide api to manipulate of http requests, logging, requests pull.
+    /services - services that provide api to manipulate http requests, logging, requests pull.
 ```
 
 ## Require vs ES6 imports
 
-Here is common.js modules are used because they don't require usage of babel. @std/esm is a good alternative but it still has some issues to enable for 3rd party libraries and can be considered as experimental, not production ready.
+Here is common.js modules are used because they don't require babel (additional compile step on build). @std/esm is a good alternative but it has some issues to enable for 3rd party libraries and can be considered as experimental, not production ready.

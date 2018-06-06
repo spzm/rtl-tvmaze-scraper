@@ -1,9 +1,10 @@
 const debounce = require('./debounce');
 
 /**
- * Special debounced counter to prevent several async
- * actions increas the coef several times.
+ * Special debounce counter to prevent several async
+ * actions. It allows to increase counter only after wait delay.
  *
+ * @param {Integer} initialCoef initial coefficient
  */
 class DebouncedCounter {
   constructor(initialCoef, wait = 100) {

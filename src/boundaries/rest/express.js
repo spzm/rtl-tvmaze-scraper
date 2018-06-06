@@ -29,7 +29,7 @@ router.use((req, res, next) => {
 router.all('/', (req, res, next) => {
   const rootInfo = {
     'show casts': `${config.get('endpoints:base')}/api/v0/showCast?page=0&size=250`,
-    'sync tyme': config.get('scraper:jobSchedule')
+    'sync time': config.get('scraper:jobSchedule')
   };
   res.json(rootInfo);
 });

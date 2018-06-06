@@ -15,7 +15,6 @@ const ShowCast = new mongoose.Schema({
 });
 
 ShowCast.statics.findByPage = function(page, pageSize, cb) {
-  // To provide jagination by id rather than by number of elements
   const min = (page * pageSize) + 1;
   const max = page * pageSize + pageSize;
 

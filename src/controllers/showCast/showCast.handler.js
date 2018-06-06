@@ -28,7 +28,7 @@ const getShowCast = async (req, res, next) => {
       page,
       size || config.get('rest:showCastPageSize')
     );
-    const responce = result.map(show => {
+    const response = result.map(show => {
       if (!Array.isArray(show.cast)) return show;
 
       return {
@@ -40,7 +40,7 @@ const getShowCast = async (req, res, next) => {
       };
     });
 
-    res.json(responce);
+    res.json(response);
   } catch (err) {
     logger.error(`Error during findByPage: ${err}`);
     res.status(500).json({ message: 'Something went wrong on the server' });
